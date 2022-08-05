@@ -29,4 +29,18 @@ describe("camelCase", () => {
         });
     });
 });
+describe("snakeCase", () => {
+    const toSnakeCase = [
+        { input: "CamelCase", output: "camel_case" },
+        { input: "camelCase", output: "camel_case" },
+        { input: "camel Case", output: "camel_case" },
+        { input: "camel-case", output: "camel_case" },
+        { input: "CAMEL-case", output: "camel_case" },
+    ];
+    toSnakeCase.forEach((entry) => {
+        it(`should convert to snakeCase: ${entry.input} -> ${entry.output}`, () => {
+            expect((0, convert_1.snakeCase)(entry.input)).toBe(entry.output);
+        });
+    });
+});
 //# sourceMappingURL=convert.test.js.map
