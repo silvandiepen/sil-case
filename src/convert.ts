@@ -8,6 +8,8 @@ export const PascalCase = (str: string): string => {
     .replace(/(\$)(\w?)/g, (m, a, b) => b.toUpperCase());
 };
 
+export const pascalCase = PascalCase;
+
 export const camelCase = (str: string): string => {
   if (!str) return "";
   const newStr = String(str)
@@ -17,6 +19,15 @@ export const camelCase = (str: string): string => {
     .toLowerCase()
     .replace(/(\$)(\w?)/g, (m, a, b) => b.toUpperCase());
   return newStr.charAt(0).toLowerCase() + newStr.substring(1);
+};
+
+
+export const kebabCase = (str: string = ""): string => {
+  if (!str) return "";
+  const matches = str.match(
+    /[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g
+  );
+  return matches ? matches.map((x) => x.toLowerCase()).join("-") : "";
 };
 
 export const camelToSnakeCase = (str: string): string => {

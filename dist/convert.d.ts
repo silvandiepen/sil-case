@@ -1,5 +1,9 @@
 export declare const PascalCase: (str: string) => string;
 export declare const camelCase: (str: string) => string;
+export declare const kebabCase: (str?: string) => string;
 export declare const camelToSnakeCase: (str: string) => string;
+export declare const camelToSlugCase: (str: string) => string;
 export declare const snakeCase: (str: string) => string;
+export declare const upperSnakeCase: (str: string) => string;
+export declare const slugCase: (str: string) => string;
 //# sourceMappingURL=convert.d.ts.map

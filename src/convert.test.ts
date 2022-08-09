@@ -1,4 +1,4 @@
-import { PascalCase, camelCase, snakeCase,slugCase,upperSnakeCase } from "./convert";
+import { PascalCase, camelCase, snakeCase,slugCase,upperSnakeCase, kebabCase } from "./convert";
 
 describe("PascalCase", () => {
   const toPascalCase = [
@@ -27,6 +27,22 @@ describe("camelCase", () => {
   toCamelCase.forEach((entry) => {
     it(`should convert to camelCase: ${entry.input} -> ${entry.output}`, () => {
       expect(camelCase(entry.input)).toBe(entry.output);
+    });
+  });
+});
+
+describe("kebabCase", () => {
+  const toKebabCase = [
+    { input: "KebabCase", output: "kebab-case" },
+    { input: "kebabCase", output: "kebab-case" },
+    { input: "kebab Case", output: "kebab-case" },
+    { input: "kebab-case", output: "kebab-case" },
+    { input: "KEBAB-case", output: "kebab-case" },
+  ];
+
+  toKebabCase.forEach((entry) => {
+    it(`should convert to kebabCase: ${entry.input} -> ${entry.output}`, () => {
+      expect(kebabCase(entry.input)).toBe(entry.output);
     });
   });
 });

@@ -29,17 +29,59 @@ describe("camelCase", () => {
         });
     });
 });
+describe("kebabCase", () => {
+    const toKebabCase = [
+        { input: "KebabCase", output: "kebab-case" },
+        { input: "kebabCase", output: "kebab-case" },
+        { input: "kebab Case", output: "kebab-case" },
+        { input: "kebab-case", output: "kebab-case" },
+        { input: "KEBAB-case", output: "kebab-case" },
+    ];
+    toKebabCase.forEach((entry) => {
+        it(`should convert to kebabCase: ${entry.input} -> ${entry.output}`, () => {
+            expect((0, convert_1.kebabCase)(entry.input)).toBe(entry.output);
+        });
+    });
+});
 describe("snakeCase", () => {
     const toSnakeCase = [
-        { input: "CamelCase", output: "camel_case" },
-        { input: "camelCase", output: "camel_case" },
-        { input: "camel Case", output: "camel_case" },
-        { input: "camel-case", output: "camel_case" },
-        { input: "CAMEL-case", output: "camel_case" },
+        { input: "SnakeCase", output: "snake_case" },
+        { input: "snakeCase", output: "snake_case" },
+        { input: "snake Case", output: "snake_case" },
+        { input: "snake-case", output: "snake_case" },
+        { input: "SNAKE-case", output: "snake_case" },
     ];
     toSnakeCase.forEach((entry) => {
         it(`should convert to snakeCase: ${entry.input} -> ${entry.output}`, () => {
             expect((0, convert_1.snakeCase)(entry.input)).toBe(entry.output);
+        });
+    });
+});
+describe("upperSnakeCase", () => {
+    const toUpperSnakeCase = [
+        { input: "SnakeCase", output: "SNAKE_CASE" },
+        { input: "snakeCase", output: "SNAKE_CASE" },
+        { input: "snake Case", output: "SNAKE_CASE" },
+        { input: "snake-case", output: "SNAKE_CASE" },
+        { input: "SNAKE-case", output: "SNAKE_CASE" },
+    ];
+    toUpperSnakeCase.forEach((entry) => {
+        it(`should convert to upperSnakeCase: ${entry.input} -> ${entry.output}`, () => {
+            expect((0, convert_1.upperSnakeCase)(entry.input)).toBe(entry.output);
+        });
+    });
+});
+describe("slugCase", () => {
+    const toSlugCase = [
+        { input: "SlugCase", output: "slug-case" },
+        { input: "slugCase", output: "slug-case" },
+        { input: "slug Case", output: "slug-case" },
+        { input: "slug-case", output: "slug-case" },
+        { input: "SLUG-case", output: "slug-case" },
+    ];
+    toSlugCase.forEach((entry) => {
+        it(`should convert to slugCase: ${entry.input} -> ${entry.output}`, () => {
+            expect((0, convert_1.slugCase)(entry.input)).toBe(entry.output);
         });
     });
 });
