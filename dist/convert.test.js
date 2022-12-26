@@ -36,6 +36,7 @@ describe("kebabCase", () => {
         { input: "kebab Case", output: "kebab-case" },
         { input: "kebab-case", output: "kebab-case" },
         { input: "KEBAB-case", output: "kebab-case" },
+        { input: "KEBAB, case", output: "kebab-case" },
     ];
     toKebabCase.forEach((entry) => {
         it(`should convert to kebabCase: ${entry.input} -> ${entry.output}`, () => {

@@ -1,4 +1,5 @@
 export declare const PascalCase: (str: string) => string;
+export declare const pascalCase: (str: string) => string;
 export declare const camelCase: (str: string) => string;
 export declare const kebabCase: (str?: string) => string;
 export declare const camelToSnakeCase: (str: string) => string;

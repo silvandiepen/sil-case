@@ -1,8 +1,21 @@
-export const PascalCase = (str: string): string => {
+interface Options {
+  exclude?: string[];
+}
+
+export const PascalCase = (str: string, options: Options = {}): string => {
   if (!str) return "";
+  const exclude = options.exclude ? options.exclude.join("") : ``;
+  const Az09 = `A-Za-z0-9${exclude}`;
+
+  const a1 = `^[^${Az09}]*|[^${Az09}]*$`;
+  const a2 = new RegExp(a1, "g");
+
+  const b1 = `[^${Az09}]+`;
+  const b2 = new RegExp(b1, "g");
+
   return String(str)
-    .replace(/^[^A-Za-z0-9]*|[^A-Za-z0-9]*$/g, "$")
-    .replace(/[^A-Za-z0-9]+/g, "$")
+    .replace(a2, "$")
+    .replace(b2, "$")
     .replace(/([a-z])([A-Z])/g, (m, a, b) => a + "$" + b)
     .toLowerCase()
     .replace(/(\$)(\w?)/g, (m, a, b) => b.toUpperCase());
@@ -10,17 +23,25 @@ export const PascalCase = (str: string): string => {
 
 export const pascalCase = PascalCase;
 
-export const camelCase = (str: string): string => {
+export const camelCase = (str: string, options: Options = {}): string => {
   if (!str) return "";
+  const exclude = options.exclude ? options.exclude.join("") : ``;
+  const Az09 = `A-Za-z0-9${exclude}`;
+
+  const a1 = `^[^${Az09}]*|[^${Az09}]*$`;
+  const a2 = new RegExp(a1, "g");
+
+  const b1 = `[^${Az09}]+`;
+  const b2 = new RegExp(b1, "g");
+
   const newStr = String(str)
-    .replace(/^[^A-Za-z0-9]*|[^A-Za-z0-9]*$/g, "$")
-    .replace(/[^A-Za-z0-9]+/g, "$")
+    .replace(a2, "$")
+    .replace(b2, "$")
     .replace(/([a-z])([A-Z])/g, (m, a, b) => a + "$" + b)
     .toLowerCase()
     .replace(/(\$)(\w?)/g, (m, a, b) => b.toUpperCase());
   return newStr.charAt(0).toLowerCase() + newStr.substring(1);
 };
-
 
 export const kebabCase = (str: string = ""): string => {
   if (!str) return "";

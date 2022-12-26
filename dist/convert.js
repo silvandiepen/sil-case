@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.slugCase = exports.upperSnakeCase = exports.snakeCase = exports.camelToSlugCase = exports.camelToSnakeCase = exports.kebabCase = exports.camelCase = exports.PascalCase = void 0;
+exports.slugCase = exports.upperSnakeCase = exports.snakeCase = exports.camelToSlugCase = exports.camelToSnakeCase = exports.kebabCase = exports.camelCase = exports.pascalCase = exports.PascalCase = void 0;
 const PascalCase = (str) => {
     if (!str)
         return "";
@@ -12,6 +12,7 @@ const PascalCase = (str) => {
         .replace(/(\$)(\w?)/g, (m, a, b) => b.toUpperCase());
 };
 exports.PascalCase = PascalCase;
+exports.pascalCase = exports.PascalCase;
 const camelCase = (str) => {
     if (!str)
         return "";
