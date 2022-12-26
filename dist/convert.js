@@ -1,24 +1,36 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.slugCase = exports.upperSnakeCase = exports.snakeCase = exports.camelToSlugCase = exports.camelToSnakeCase = exports.kebabCase = exports.camelCase = exports.pascalCase = exports.PascalCase = void 0;
-const PascalCase = (str) => {
+const PascalCase = (str, options = {}) => {
     if (!str)
         return "";
+    const exclude = options.exclude ? options.exclude.join("") : ``;
+    const Az09 = `A-Za-z0-9${exclude}`;
+    const a1 = `^[^${Az09}]*|[^${Az09}]*$`;
+    const a2 = new RegExp(a1, "g");
+    const b1 = `[^${Az09}]+`;
+    const b2 = new RegExp(b1, "g");
     return String(str)
-        .replace(/^[^A-Za-z0-9]*|[^A-Za-z0-9]*$/g, "$")
-        .replace(/[^A-Za-z0-9]+/g, "$")
+        .replace(a2, "$")
+        .replace(b2, "$")
         .replace(/([a-z])([A-Z])/g, (m, a, b) => a + "$" + b)
         .toLowerCase()
         .replace(/(\$)(\w?)/g, (m, a, b) => b.toUpperCase());
 };
 exports.PascalCase = PascalCase;
 exports.pascalCase = exports.PascalCase;
-const camelCase = (str) => {
+const camelCase = (str, options = {}) => {
     if (!str)
         return "";
+    const exclude = options.exclude ? options.exclude.join("") : ``;
+    const Az09 = `A-Za-z0-9${exclude}`;
+    const a1 = `^[^${Az09}]*|[^${Az09}]*$`;
+    const a2 = new RegExp(a1, "g");
+    const b1 = `[^${Az09}]+`;
+    const b2 = new RegExp(b1, "g");
     const newStr = String(str)
-        .replace(/^[^A-Za-z0-9]*|[^A-Za-z0-9]*$/g, "$")
-        .replace(/[^A-Za-z0-9]+/g, "$")
+        .replace(a2, "$")
+        .replace(b2, "$")
         .replace(/([a-z])([A-Z])/g, (m, a, b) => a + "$" + b)
         .toLowerCase()
         .replace(/(\$)(\w?)/g, (m, a, b) => b.toUpperCase());
