@@ -5,7 +5,9 @@
   "main": "dist/index.js",
   "scripts": {
     "test": "jest",
+    "dev:test": "jest --watch",
     "build": "tsc",
+    "dev": "tsc -w",
     "prepublishOnly": "npm run test"
   },
   "keywords": [

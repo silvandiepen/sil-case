@@ -1,6 +1,35 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.slugCase = exports.upperSnakeCase = exports.snakeCase = exports.camelToSlugCase = exports.camelToSnakeCase = exports.kebabCase = exports.camelCase = exports.pascalCase = exports.PascalCase = void 0;
+exports.slugCase = exports.upperSnakeCase = exports.snakeCase = exports.camelToSlugCase = exports.camelToSnakeCase = exports.kebabCase = exports.camelCase = exports.pascalCase = exports.PascalCase = exports.normalize = exports.containsSpecialCharacters = exports.isUpperCase = void 0;
+const data_1 = require("./data");
+const isUpperCase = (char) => {
+    return char === char.toUpperCase();
+};
+exports.isUpperCase = isUpperCase;
+const containsSpecialCharacters = (str) => {
+    const specialChars = Object.values(data_1.specialCharacters).flat();
+    for (let i = 0; i < str.length; i++) {
+        if (specialChars.includes(str[i])) {
+            return true;
+        }
+    }
+    return false;
+};
+exports.containsSpecialCharacters = containsSpecialCharacters;
+const normalize = (str) => {
+    const chars = str.split("");
+    const newStr = chars
+        .map((char) => {
+        if (!char.match(/([a-zA-Z0-9 -])/g)) {
+            const replaceChar = (Object.keys(data_1.specialCharacters).find((key) => data_1.specialCharacters[key].indexOf(char.toLowerCase()) > -1) || "_");
+            return (0, exports.isUpperCase)(char) ? replaceChar.toUpperCase() : replaceChar;
+        }
+        return char;
+    })
+        .join("");
+    return newStr;
+};
+exports.normalize = normalize;
 const PascalCase = (str, options = {}) => {
     if (!str)
         return "";
@@ -28,6 +57,7 @@ const camelCase = (str, options = {}) => {
     const a2 = new RegExp(a1, "g");
     const b1 = `[^${Az09}]+`;
     const b2 = new RegExp(b1, "g");
+    4;
     const newStr = String(str)
         .replace(a2, "$")
         .replace(b2, "$")

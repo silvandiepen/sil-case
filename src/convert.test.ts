@@ -1,4 +1,5 @@
 import {
+  normalize,
   PascalCase,
   camelCase,
   snakeCase,
@@ -6,6 +7,18 @@ import {
   upperSnakeCase,
   kebabCase,
 } from "./convert";
+
+describe("Normalize", () => {
+  it('Should convert to the right string - accents',()=>{
+    expect(normalize('helloéèhello')).toBe('helloeehello')
+  })
+  it('Should convert to the right string - Maltese',()=>{
+    expect(normalize('Birżebbuġa')).toBe('Birzebbuga')
+  })
+  it('Should convert to the right string - Maltese',()=>{
+    expect(normalize('Ħaż-Żebbuġ')).toBe('Haz-Zebbug')
+  })
+});
 
 describe("PascalCase", () => {
   const toPascalCase = [
@@ -52,7 +65,7 @@ describe("camelCase", () => {
       entry.options
         ? expect(camelCase(entry.input, entry.options)).toBe(entry.output)
         : expect(camelCase(entry.input)).toBe(entry.output);
-   });
+    });
   });
 });
 

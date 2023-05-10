@@ -1,6 +1,17 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const convert_1 = require("./convert");
+describe("Normalize", () => {
+    it('Should convert to the right string - accents', () => {
+        expect((0, convert_1.normalize)('helloéèhello')).toBe('helloeehello');
+    });
+    it('Should convert to the right string - Maltese', () => {
+        expect((0, convert_1.normalize)('Birżebbuġa')).toBe('Birzebbuga');
+    });
+    it('Should convert to the right string - Maltese', () => {
+        expect((0, convert_1.normalize)('Ħaż-Żebbuġ')).toBe('Haz-Zebbug');
+    });
+});
 describe("PascalCase", () => {
     const toPascalCase = [
         { input: "PascalCase", output: "PascalCase" },
