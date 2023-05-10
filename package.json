@@ -1,6 +1,6 @@
 {
   "name": "@sil/case",
-  "version": "0.0.5",
+  "version": "0.1.0",
   "description": "Convert cases",
   "main": "dist/index.js",
   "scripts": {
