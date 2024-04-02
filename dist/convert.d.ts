@@ -13,5 +13,6 @@ export declare const camelToSlugCase: (str: string) => string;
 export declare const snakeCase: (str: string) => string;
 export declare const upperSnakeCase: (str: string) => string;
 export declare const slugCase: (str: string) => string;
+export declare const constCase: (str: string, startChar?: string) => string;
 export {};
 //# sourceMappingURL=convert.d.ts.map

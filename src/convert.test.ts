@@ -6,6 +6,7 @@ import {
   slugCase,
   upperSnakeCase,
   kebabCase,
+  constCase
 } from "./convert";
 
 describe("Normalize", () => {
@@ -131,5 +132,21 @@ describe("slugCase", () => {
     it(`should convert to slugCase: ${entry.input} -> ${entry.output}`, () => {
       expect(slugCase(entry.input)).toBe(entry.output);
     });
+  });
+});
+
+describe('CONST_CASE', () => {
+  it('should return string in upper snake case', () => {
+    const result = constCase('hello world');
+    expect(result).toBe('HELLO_WORLD');
+  });
+
+  it('should return string in upper snake case with a leading underscore if it starts with a number', () => {
+    const result = constCase('1hello world');
+    expect(result).toBe('_1HELLO_WORLD');
+  });
+  it('should return string in upper snake case with a custom character if it starts with a number', () => {
+    const result = constCase('1hello world','=');
+    expect(result).toBe('=1HELLO_WORLD');
   });
 });

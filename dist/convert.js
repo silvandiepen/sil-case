@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.slugCase = exports.upperSnakeCase = exports.snakeCase = exports.camelToSlugCase = exports.camelToSnakeCase = exports.kebabCase = exports.camelCase = exports.pascalCase = exports.PascalCase = exports.normalize = exports.containsSpecialCharacters = exports.isUpperCase = void 0;
+exports.constCase = exports.slugCase = exports.upperSnakeCase = exports.snakeCase = exports.camelToSlugCase = exports.camelToSnakeCase = exports.kebabCase = exports.camelCase = exports.pascalCase = exports.PascalCase = exports.normalize = exports.containsSpecialCharacters = exports.isUpperCase = void 0;
 const data_1 = require("./data");
 const isUpperCase = (char) => {
     return char === char.toUpperCase();
@@ -106,4 +106,14 @@ const slugCase = (str) => {
     return (0, exports.camelToSlugCase)((0, exports.camelCase)(str));
 };
 exports.slugCase = slugCase;
+const constCase = (str, startChar = "_") => {
+    if (!str)
+        return "";
+    let newStr = (0, exports.upperSnakeCase)(str);
+    if (!isNaN(parseInt(newStr.charAt(0)))) {
+        return `${startChar}${newStr}`;
+    }
+    return newStr;
+};
+exports.constCase = constCase;
 //# sourceMappingURL=convert.js.map

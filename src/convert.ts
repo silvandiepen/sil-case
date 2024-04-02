@@ -111,3 +111,14 @@ export const slugCase = (str: string): string => {
   if (!str) return "";
   return camelToSlugCase(camelCase(str));
 };
+
+export const constCase = (str: string, startChar: string = "_" ): string => {
+  if (!str) return "";
+  let newStr = upperSnakeCase(str);
+      
+  if(!isNaN(parseInt(newStr.charAt(0)))) {
+		return `${startChar}${newStr}`;
+	}
+	return newStr;
+
+}

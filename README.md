@@ -27,7 +27,7 @@ Convert a string to pascalCase
 example:
 
 ```
-MyString
+My String > MyString
 ```
 
 
@@ -39,7 +39,7 @@ Convert a string to pascalCase
 example:
 
 ```
-myString
+My string > myString
 ```
 
 
@@ -49,7 +49,7 @@ Convert a string to kebabCase
 example:
 
 ```
-my-string
+My string > my-string
 ```
 
 
@@ -59,7 +59,7 @@ Convert a string to snakeCase
 example:
 
 ```
-my_string
+My string > my_string
 ```
 
 
@@ -69,7 +69,7 @@ Convert a string to upperSnakeCase
 example:
 
 ```
-MY_STRING
+My string > MY_STRING
 ```
 
 
@@ -79,5 +79,18 @@ Convert a string to slugCase aka kebabCase
 example:
 
 ```
-my-string
+My string > my-string
+```
+
+
+### constCase
+Constants usually use an upperSnakeCase, but don't allow the string to start with a number. constCase does exactly that. It adds an _ at the beginning of a string whenever it starts with a number. 
+
+example:
+
+
+
+```
+My string > MY_STRING
+1 String > _1_STRING
 ```

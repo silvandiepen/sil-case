@@ -115,4 +115,18 @@ describe("slugCase", () => {
         });
     });
 });
+describe('CONST_CASE', () => {
+    it('should return string in upper snake case', () => {
+        const result = (0, convert_1.constCase)('hello world');
+        expect(result).toBe('HELLO_WORLD');
+    });
+    it('should return string in upper snake case with a leading underscore if it starts with a number', () => {
+        const result = (0, convert_1.constCase)('1hello world');
+        expect(result).toBe('_1HELLO_WORLD');
+    });
+    it('should return string in upper snake case with a custom character if it starts with a number', () => {
+        const result = (0, convert_1.constCase)('1hello world', '=');
+        expect(result).toBe('=1HELLO_WORLD');
+    });
+});
 //# sourceMappingURL=convert.test.js.map
