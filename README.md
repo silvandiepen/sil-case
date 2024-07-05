@@ -84,7 +84,7 @@ My string > my-string
 
 
 ### constCase
-Constants usually use an upperSnakeCase, but don't allow the string to start with a number. constCase does exactly that. It adds an _ at the beginning of a string whenever it starts with a number. 
+Constants usually use an upperSnakeCase, but don't allow the string to start with a number. constCase does exactly that. It adds an _ at the beginning of a string whenever it starts with a number.
 
 example:
 
@@ -93,4 +93,14 @@ example:
 ```
 My string > MY_STRING
 1 String > _1_STRING
+```
+
+### sentenceCase
+Converts any string to a sentence case, which means just lowercase letters and spaces. Starting with a capital letter. This function is helpful to make const variables etc look nice in headers.
+
+example:
+
+```
+MY_STRING > My string
+my-string > My string
 ```

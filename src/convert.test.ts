@@ -6,7 +6,8 @@ import {
   slugCase,
   upperSnakeCase,
   kebabCase,
-  constCase
+  constCase,
+  sentenceCase
 } from "./convert";
 
 describe("Normalize", () => {
@@ -150,3 +151,27 @@ describe('CONST_CASE', () => {
     expect(result).toBe('=1HELLO_WORLD');
   });
 });
+
+describe('sentenceCase', () => {
+  it('should return string in sentence case', () => {
+    const result = sentenceCase('hello-world');
+    expect(result).toBe('Hello world');
+  });
+  it('should return string in sentence case', () => {
+    const result = sentenceCase('HelloWorld');
+    expect(result).toBe('Hello world');
+  });
+  it('should return string in sentence case', () => {
+    const result = sentenceCase('hello world');
+    expect(result).toBe('Hello world');
+  });
+  it('should return string in sentence case', () => {
+    const result = sentenceCase('HELLO_WORLD');
+    expect(result).toBe('Hello world');
+  });
+  it('should return string in sentence case', () => {
+    const result = sentenceCase('HELLO-WORLD');
+    expect(result).toBe('Hello world');
+  });
+});
+

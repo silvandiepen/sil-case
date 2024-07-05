@@ -27,7 +27,7 @@ export const normalize = (str: string): string => {
           Object.keys(specialCharacters).find(
             (key) => specialCharacters[key].indexOf(char.toLowerCase()) > -1
           ) || "_"
-        
+
         );
         return isUpperCase(char) ? replaceChar.toUpperCase() : replaceChar;
       }
@@ -115,10 +115,20 @@ export const slugCase = (str: string): string => {
 export const constCase = (str: string, startChar: string = "_" ): string => {
   if (!str) return "";
   let newStr = upperSnakeCase(str);
-      
+
   if(!isNaN(parseInt(newStr.charAt(0)))) {
 		return `${startChar}${newStr}`;
 	}
 	return newStr;
 
+}
+
+export const sentenceCase = (str: string): string => {
+  if (!str) return "";
+  // Insert spaces before uppercase letters in the middle of the string
+  let result = str.replace(/([a-z])([A-Z])/g, '$1 $2');
+  // Trim the string, replace underscores and dashes with spaces, and convert to lowercase
+  result = result.trim().replace(/[-_]/g, " ").toLowerCase();
+  // Convert only the first character of the entire string to uppercase
+  return result.replace(/^./, (firstChar) => firstChar.toUpperCase());
 }
