@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.constCase = exports.slugCase = exports.upperSnakeCase = exports.snakeCase = exports.camelToSlugCase = exports.camelToSnakeCase = exports.kebabCase = exports.camelCase = exports.pascalCase = exports.PascalCase = exports.normalize = exports.containsSpecialCharacters = exports.isUpperCase = void 0;
+exports.sentenceCase = exports.constCase = exports.slugCase = exports.upperSnakeCase = exports.snakeCase = exports.camelToSlugCase = exports.camelToSnakeCase = exports.kebabCase = exports.camelCase = exports.pascalCase = exports.PascalCase = exports.normalize = exports.containsSpecialCharacters = exports.isUpperCase = void 0;
 const data_1 = require("./data");
 const isUpperCase = (char) => {
     return char === char.toUpperCase();
@@ -116,4 +116,12 @@ const constCase = (str, startChar = "_") => {
     return newStr;
 };
 exports.constCase = constCase;
+const sentenceCase = (str) => {
+    if (!str)
+        return "";
+    let result = str.replace(/([a-z])([A-Z])/g, '$1 $2');
+    result = result.trim().replace(/[-_]/g, " ").toLowerCase();
+    return result.replace(/^./, (firstChar) => firstChar.toUpperCase());
+};
+exports.sentenceCase = sentenceCase;
 //# sourceMappingURL=convert.js.map

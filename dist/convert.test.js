@@ -129,4 +129,26 @@ describe('CONST_CASE', () => {
         expect(result).toBe('=1HELLO_WORLD');
     });
 });
+describe('sentenceCase', () => {
+    it('should return string in sentence case', () => {
+        const result = (0, convert_1.sentenceCase)('hello-world');
+        expect(result).toBe('Hello world');
+    });
+    it('should return string in sentence case', () => {
+        const result = (0, convert_1.sentenceCase)('HelloWorld');
+        expect(result).toBe('Hello world');
+    });
+    it('should return string in sentence case', () => {
+        const result = (0, convert_1.sentenceCase)('hello world');
+        expect(result).toBe('Hello world');
+    });
+    it('should return string in sentence case', () => {
+        const result = (0, convert_1.sentenceCase)('HELLO_WORLD');
+        expect(result).toBe('Hello world');
+    });
+    it('should return string in sentence case', () => {
+        const result = (0, convert_1.sentenceCase)('HELLO-WORLD');
+        expect(result).toBe('Hello world');
+    });
+});
 //# sourceMappingURL=convert.test.js.map
